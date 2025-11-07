@@ -27,7 +27,7 @@ int main(int argc, char* argv[]) {
     argParse(argc, argv);
     readFromFile();
 
-    // Bat1 não passa -i, então se não vier usamos 1
+    
     int start = 1;
     if (!options[BEGIN].empty() && isNumber(options[BEGIN])) {
         start = atoi(options[BEGIN].c_str());
@@ -92,8 +92,6 @@ void readFromFile() {
         int u, v, w;
         in >> u >> v >> w;
         --u; --v;
-        // <- AQUI é o ajuste importante: mesmo arquivo usado pra AGM,
-        // então vamos considerar não direcionado
         adj[u].push_back((Edge){v, w});
         adj[v].push_back((Edge){u, w});
     }
